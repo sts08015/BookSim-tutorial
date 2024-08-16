@@ -1,0 +1,1 @@
+../../booksim2/src/booksim ../../booksim2/src/examples/flatflyconfig injection_rate=0.025 traffic=uniform
