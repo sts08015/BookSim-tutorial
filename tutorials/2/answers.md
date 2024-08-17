@@ -21,17 +21,23 @@ A: Each packet is consist of multiple flits.
 1. Please refer Equation 3.11 in Section 3.3.2 of Dally’s textbook. Fill in the value for the variables below.
 
 Equation 3.11: $$T_0 = H_{min}t_r + \frac{D_{min}}{v} + \frac{L}{b}$$
+$$T_r=H_{min}t_r, \, T_w = \frac{D_{min}}{v}$$
 $T_0$: zero-load latency, $H_{min}$: average hop count, $t_r$: average router delay, $D_{min}$: average distance, $v$: propagation delay, $L$: packet size, $b$: channel bandwidth
 
-| Variable |             Definition             | Value |
-|:--------:|:----------------------------------:|:-----:|
-|   $T_r$  |     Latency of a single router     |       |
-|   $T_w$  |     Length of a single channel     |       |
-|   $N_r$  |  Total number of traversed routers |       |
-|   $N_w$  | Total number of traversed channels |       |
+| Variable |             Definition             |  Value  |
+|:--------:|:----------------------------------:|:-------:|
+|   $t_r$  |     Latency of a single router     |    3    |
+|   $T_w$  |     Latency of a single channel    |    1    |
+|   $N_r$  |  Total number of traversed routers | 1.93717 |
+|   $N_w$  | Total number of traversed channels | 2.93717 |
 
 # Task 2
 
 1. Using the values obtained from table 1, count (by hand) your expected zero-load latency for a 8node 1D torus.
 
+A:
+average hop count: 
+
 2. Compare your expected zero-load latency with the BookSim result. Are they the same?
+
+A: BookSim result: 13.3832
