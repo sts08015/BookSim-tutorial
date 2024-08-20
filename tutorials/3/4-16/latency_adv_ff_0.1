@@ -145,79 +145,79 @@ OVERRIDE Parameter: seed=1
 2 | network_0/router_1 | Beginning routing for VC 0 at input 1 (front: 1).
 2 | network_0/router_1 | Completed routing for VC 0 at input 1 (front: 1).
 2 | network_0/router_1/buf_1/vc_0 | Changing state from routing to vc_alloc.
+2 | network_0/router_1 | Beginning VC allocation for VC 0 at input 1 (front: 1).
+2 | network_0/router_1 |   Requesting VC 0 at output 5 (in_pri: 0, out_pri: 0).
+2 | network_0/router_1 |   Requesting VC 1 at output 5 (in_pri: 0, out_pri: 0).
+2 | network_0/router_1/vc_allocator | Input requests = [ 0 -> [ 10@0 11@0 ]  2 -> [ 10@0 11@0 ]  ], output requests = [ 10 -> [ 0@0 2@0 ]  11 -> [ 0@0 2@0 ]  ].
+2 | network_0/router_1/vc_allocator | Input grants = [ 0 -> 10  ], output grants = [ 10 -> 0  ].
+2 | network_0/router_1 | VC allocation failed for VC 0 at input 1.
+2 | network_0/router_1 | Completed VC allocation for VC 0 at input 1 (front: 1).
+2 | network_0/router_1 |   No output VC allocated.
 3 | network_0/router_1 | Beginning VC allocation for VC 0 at input 1 (front: 1).
 3 | network_0/router_1 |   Requesting VC 0 at output 5 (in_pri: 0, out_pri: 0).
 3 | network_0/router_1 |   Requesting VC 1 at output 5 (in_pri: 0, out_pri: 0).
-3 | network_0/router_1/vc_allocator | Input requests = [ 0 -> [ 10@0 11@0 ]  2 -> [ 10@0 11@0 ]  ], output requests = [ 10 -> [ 0@0 2@0 ]  11 -> [ 0@0 2@0 ]  ].
-3 | network_0/router_1/vc_allocator | Input grants = [ 0 -> 10  ], output grants = [ 10 -> 0  ].
-3 | network_0/router_1 | VC allocation failed for VC 0 at input 1.
+3 | network_0/router_1/vc_allocator | Input requests = [ 2 -> [ 10@0 11@0 ]  ], output requests = [ 10 -> [ 2@0 ]  11 -> [ 2@0 ]  ].
+3 | network_0/router_1/vc_allocator | Input grants = [ 2 -> 10  ], output grants = [ 10 -> 2  ].
+3 | network_0/router_1 | Assigning VC 0 at output 5 to VC 0 at input 1.
 3 | network_0/router_1 | Completed VC allocation for VC 0 at input 1 (front: 1).
-3 | network_0/router_1 |   No output VC allocated.
-3 | network_0/router_1 | Beginning VC allocation for VC 0 at input 1 (front: 1).
-3 | network_0/router_1 |   VC 0 at output 5 is in use by VC 0 at input 0 (front flit: 0).
-3 | network_0/router_1 |   Requesting VC 1 at output 5 (in_pri: 0, out_pri: 0).
-3 | network_0/router_1/vc_allocator | Input requests = [ 2 -> [ 11@0 ]  ], output requests = [ 11 -> [ 2@0 ]  ].
-3 | network_0/router_1/vc_allocator | Input grants = [ 2 -> 11  ], output grants = [ 11 -> 2  ].
-3 | network_0/router_1 | Assigning VC 1 at output 5 to VC 0 at input 1.
-3 | network_0/router_1 | Completed VC allocation for VC 0 at input 1 (front: 1).
-3 | network_0/router_1 |   Acquiring assigned VC 1 at output 5.
+3 | network_0/router_1 |   Acquiring assigned VC 0 at output 5.
 3 | network_0/router_1/buf_1/vc_0 | Changing state from vc_alloc to active.
-4 | network_0/router_1 | Beginning switch allocation for VC 0 at input 1 (front: 1).
-4 | network_0/router_1 |   Requesting output 5.0 (non-spec, pri: 0).
-4 | network_0/router_1/sw_allocator | Input requests = [ 1 -> [ 5@0 ]  ], output requests = [ 5 -> [ 1@0 ]  ].
-4 | network_0/router_1/sw_allocator | Input grants = [ 1 -> 5  ], output grants = [ 5 -> 1  ].
-4 | network_0/router_1 | Assigning output 5.0 to VC 0 at input 1.0.
-4 | network_0/router_1 | Completed switch allocation for VC 0 at input 1 (front: 1).
-4 | network_0/router_1 |   Scheduling switch connection from input 1.0 to output 5.0.
-4 | network_0/router_1 | Beginning crossbar traversal for flit 1 from input 1.0 to output 5.0.
-4 | network_0/router_1 | Completed crossbar traversal for flit 1 from input 1.0 to output 5.0.
-4 | network_0/router_1 | Buffering flit 1 at output 5.
-5 | network_0/router_1 | Sending flit 1 to channel at output 5.
-6 | network_0/network_0_fchan_4 | Beginning channel traversal for flit 1 with delay 1.
-6 | network_0/network_0_fchan_4 | Completed channel traversal for flit 1.
-7 | network_0/router_2 | Received flit 1 from channel at input 5.
-7 | network_0/router_2 | Adding flit 1 to VC 1 at input 5 (state: idle, empty).
-7 | network_0/router_2/buf_5/vc_1 | Changing state from idle to routing.
-7 | network_0/router_2 | Beginning routing for VC 1 at input 5 (front: 1).
-7 | network_0/router_2 | Completed routing for VC 1 at input 5 (front: 1).
-7 | network_0/router_2/buf_5/vc_1 | Changing state from routing to vc_alloc.
-8 | network_0/router_2 | Beginning VC allocation for VC 1 at input 5 (front: 1).
-8 | network_0/router_2 |   Requesting VC 0 at output 2 (in_pri: 0, out_pri: 0).
-8 | network_0/router_2 |   Requesting VC 1 at output 2 (in_pri: 0, out_pri: 0).
-8 | network_0/router_2/vc_allocator | Input requests = [ 11 -> [ 4@0 5@0 ]  ], output requests = [ 4 -> [ 11@0 ]  5 -> [ 11@0 ]  ].
-8 | network_0/router_2/vc_allocator | Input grants = [ 11 -> 4  ], output grants = [ 4 -> 11  ].
-8 | network_0/router_2 | Assigning VC 0 at output 2 to VC 1 at input 5.
-8 | network_0/router_2 | Completed VC allocation for VC 1 at input 5 (front: 1).
-8 | network_0/router_2 |   Acquiring assigned VC 0 at output 2.
-8 | network_0/router_2/buf_5/vc_1 | Changing state from vc_alloc to active.
-8 | network_0/router_2 | Beginning switch allocation for VC 1 at input 5 (front: 1).
-8 | network_0/router_2 |   Requesting output 2.0 (non-spec, pri: 0).
-8 | network_0/router_2/sw_allocator | Input requests = [ 5 -> [ 2@0 ]  ], output requests = [ 2 -> [ 5@0 ]  ].
-8 | network_0/router_2/sw_allocator | Input grants = [ 5 -> 2  ], output grants = [ 2 -> 5  ].
-8 | network_0/router_2 | Assigning output 2.0 to VC 1 at input 5.0.
-8 | network_0/router_2 | Completed switch allocation for VC 1 at input 5 (front: 1).
-8 | network_0/router_2 |   Scheduling switch connection from input 5.0 to output 2.0.
-9 | network_0/router_2 | Beginning crossbar traversal for flit 1 from input 5.0 to output 2.0.
-9 | network_0/router_2 | Completed crossbar traversal for flit 1 from input 5.0 to output 2.0.
-9 | network_0/router_2 | Buffering flit 1 at output 2.
-9 | network_0/router_2 | Sending flit 1 to channel at output 2.
-10 | network_0/network_0_fchan_egress10 | Beginning channel traversal for flit 1 with delay 1.
-10 | network_0/network_0_fchan_egress10 | Completed channel traversal for flit 1.
-11 | node10 | Ejecting flit 1 (packet 1) from VC 0.
-11 | node10 | Injecting credit for VC 0 into subnet 0.
-11 | node10 | Retiring flit 1 (packet 1, src = 5, dest = 10, hops = 2, flat = 11).
-11 | node10 | Retiring packet 1 (plat = 11, nlat = 11, frag = 0, src = 5, dest = 10).
+3 | network_0/router_1 | Beginning switch allocation for VC 0 at input 1 (front: 1).
+3 | network_0/router_1 |   Requesting output 5.0 (non-spec, pri: 0).
+3 | network_0/router_1/sw_allocator | Input requests = [ 1 -> [ 5@0 ]  ], output requests = [ 5 -> [ 1@0 ]  ].
+3 | network_0/router_1/sw_allocator | Input grants = [ 1 -> 5  ], output grants = [ 5 -> 1  ].
+3 | network_0/router_1 | Assigning output 5.0 to VC 0 at input 1.0.
+3 | network_0/router_1 | Completed switch allocation for VC 0 at input 1 (front: 1).
+3 | network_0/router_1 |   Scheduling switch connection from input 1.0 to output 5.0.
+3 | network_0/router_1 | Beginning crossbar traversal for flit 1 from input 1.0 to output 5.0.
+3 | network_0/router_1 | Completed crossbar traversal for flit 1 from input 1.0 to output 5.0.
+3 | network_0/router_1 | Buffering flit 1 at output 5.
+3 | network_0/router_1 | Sending flit 1 to channel at output 5.
+4 | network_0/network_0_fchan_4 | Beginning channel traversal for flit 1 with delay 1.
+4 | network_0/network_0_fchan_4 | Completed channel traversal for flit 1.
+5 | network_0/router_2 | Received flit 1 from channel at input 5.
+5 | network_0/router_2 | Adding flit 1 to VC 0 at input 5 (state: idle, empty).
+5 | network_0/router_2/buf_5/vc_0 | Changing state from idle to routing.
+5 | network_0/router_2 | Beginning routing for VC 0 at input 5 (front: 1).
+5 | network_0/router_2 | Completed routing for VC 0 at input 5 (front: 1).
+5 | network_0/router_2/buf_5/vc_0 | Changing state from routing to vc_alloc.
+5 | network_0/router_2 | Beginning VC allocation for VC 0 at input 5 (front: 1).
+5 | network_0/router_2 |   Requesting VC 0 at output 2 (in_pri: 0, out_pri: 0).
+5 | network_0/router_2 |   Requesting VC 1 at output 2 (in_pri: 0, out_pri: 0).
+5 | network_0/router_2/vc_allocator | Input requests = [ 10 -> [ 4@0 5@0 ]  ], output requests = [ 4 -> [ 10@0 ]  5 -> [ 10@0 ]  ].
+5 | network_0/router_2/vc_allocator | Input grants = [ 10 -> 4  ], output grants = [ 4 -> 10  ].
+5 | network_0/router_2 | Assigning VC 0 at output 2 to VC 0 at input 5.
+5 | network_0/router_2 | Completed VC allocation for VC 0 at input 5 (front: 1).
+5 | network_0/router_2 |   Acquiring assigned VC 0 at output 2.
+5 | network_0/router_2/buf_5/vc_0 | Changing state from vc_alloc to active.
+5 | network_0/router_2 | Beginning switch allocation for VC 0 at input 5 (front: 1).
+5 | network_0/router_2 |   Requesting output 2.0 (non-spec, pri: 0).
+5 | network_0/router_2/sw_allocator | Input requests = [ 5 -> [ 2@0 ]  ], output requests = [ 2 -> [ 5@0 ]  ].
+5 | network_0/router_2/sw_allocator | Input grants = [ 5 -> 2  ], output grants = [ 2 -> 5  ].
+5 | network_0/router_2 | Assigning output 2.0 to VC 0 at input 5.0.
+5 | network_0/router_2 | Completed switch allocation for VC 0 at input 5 (front: 1).
+5 | network_0/router_2 |   Scheduling switch connection from input 5.0 to output 2.0.
+5 | network_0/router_2 | Beginning crossbar traversal for flit 1 from input 5.0 to output 2.0.
+5 | network_0/router_2 | Completed crossbar traversal for flit 1 from input 5.0 to output 2.0.
+5 | network_0/router_2 | Buffering flit 1 at output 2.
+5 | network_0/router_2 | Sending flit 1 to channel at output 2.
+6 | network_0/network_0_fchan_egress10 | Beginning channel traversal for flit 1 with delay 1.
+6 | network_0/network_0_fchan_egress10 | Completed channel traversal for flit 1.
+7 | node10 | Ejecting flit 1 (packet 1) from VC 0.
+7 | node10 | Injecting credit for VC 0 into subnet 0.
+7 | node10 | Retiring flit 1 (packet 1, src = 5, dest = 10, hops = 2, flat = 7).
+7 | node10 | Retiring packet 1 (plat = 7, nlat = 7, frag = 0, src = 5, dest = 10).
 Class 0:
-Packet latency average = 10.065
-	minimum = 9
-	maximum = 15
-Network latency average = 10.065
-	minimum = 9
-	maximum = 15
+Packet latency average = 6.25232
+	minimum = 6
+	maximum = 10
+Network latency average = 6.25232
+	minimum = 6
+	maximum = 10
 Slowest packet = 731
-Flit latency average = 10.065
-	minimum = 9
-	maximum = 15
+Flit latency average = 6.25232
+	minimum = 6
+	maximum = 10
 Slowest flit = 731
 Fragmentation average = 0
 	minimum = 0
@@ -225,31 +225,31 @@ Fragmentation average = 0
 Injected packet rate average = 0.101437
 	minimum = 0.079 (at node 8)
 	maximum = 0.121 (at node 1)
-Accepted packet rate average = 0.100937
+Accepted packet rate average = 0.101062
 	minimum = 0.079 (at node 7)
 	maximum = 0.121 (at node 14)
 Injected flit rate average = 0.101437
 	minimum = 0.079 (at node 8)
 	maximum = 0.121 (at node 1)
-Accepted flit rate average= 0.100937
+Accepted flit rate average= 0.101062
 	minimum = 0.079 (at node 7)
 	maximum = 0.121 (at node 14)
 Injected packet length average = 1
 Accepted packet length average = 1
-Total in-flight flits = 8 (0 measured)
+Total in-flight flits = 6 (0 measured)
 latency change    = 1
 throughput change = 1
 Class 0:
-Packet latency average = 10.0508
-	minimum = 9
-	maximum = 15
-Network latency average = 10.0508
-	minimum = 9
-	maximum = 15
+Packet latency average = 6.25023
+	minimum = 6
+	maximum = 10
+Network latency average = 6.25023
+	minimum = 6
+	maximum = 10
 Slowest packet = 731
-Flit latency average = 10.0508
-	minimum = 9
-	maximum = 15
+Flit latency average = 6.25023
+	minimum = 6
+	maximum = 10
 Slowest flit = 731
 Fragmentation average = 0
 	minimum = 0
@@ -257,97 +257,97 @@ Fragmentation average = 0
 Injected packet rate average = 0.100875
 	minimum = 0.089 (at node 2)
 	maximum = 0.117 (at node 6)
-Accepted packet rate average = 0.100281
+Accepted packet rate average = 0.100531
 	minimum = 0.0885 (at node 13)
 	maximum = 0.116 (at node 9)
 Injected flit rate average = 0.100875
 	minimum = 0.089 (at node 2)
 	maximum = 0.117 (at node 6)
-Accepted flit rate average= 0.100281
+Accepted flit rate average= 0.100531
 	minimum = 0.0885 (at node 13)
 	maximum = 0.116 (at node 9)
 Injected packet length average = 1
 Accepted packet length average = 1
-Total in-flight flits = 19 (0 measured)
-latency change    = 0.0014149
-throughput change = 0.00654409
+Total in-flight flits = 11 (0 measured)
+latency change    = 0.000333743
+throughput change = 0.00528443
 Class 0:
-Packet latency average = 10.0628
-	minimum = 9
-	maximum = 13
-Network latency average = 10.0628
-	minimum = 9
-	maximum = 13
-Slowest packet = 3258
-Flit latency average = 10.0628
-	minimum = 9
-	maximum = 13
-Slowest flit = 3258
+Packet latency average = 6.24177
+	minimum = 6
+	maximum = 9
+Network latency average = 6.24177
+	minimum = 6
+	maximum = 9
+Slowest packet = 3254
+Flit latency average = 6.24177
+	minimum = 6
+	maximum = 9
+Slowest flit = 3254
 Fragmentation average = 0
 	minimum = 0
 	maximum = 0
 Injected packet rate average = 0.100375
 	minimum = 0.085 (at node 0)
 	maximum = 0.114 (at node 6)
-Accepted packet rate average = 0.1005
-	minimum = 0.087 (at node 15)
+Accepted packet rate average = 0.100562
+	minimum = 0.085 (at node 15)
 	maximum = 0.115 (at node 9)
 Injected flit rate average = 0.100375
 	minimum = 0.085 (at node 0)
 	maximum = 0.114 (at node 6)
-Accepted flit rate average= 0.1005
-	minimum = 0.087 (at node 15)
+Accepted flit rate average= 0.100562
+	minimum = 0.085 (at node 15)
 	maximum = 0.115 (at node 9)
 Injected packet length average = 1
 Accepted packet length average = 1
-Total in-flight flits = 17 (0 measured)
-latency change    = 0.00119413
-throughput change = 0.00217662
+Total in-flight flits = 8 (0 measured)
+latency change    = 0.00135668
+throughput change = 0.000310752
 Warmed up ...Time used is 3000 cycles
 Class 0:
-Packet latency average = 10.0387
-	minimum = 9
-	maximum = 14
-Network latency average = 10.0387
-	minimum = 9
-	maximum = 14
-Slowest packet = 5772
-Flit latency average = 10.0357
-	minimum = 9
-	maximum = 14
-Slowest flit = 5772
+Packet latency average = 6.24227
+	minimum = 6
+	maximum = 10
+Network latency average = 6.24227
+	minimum = 6
+	maximum = 10
+Slowest packet = 5910
+Flit latency average = 6.24168
+	minimum = 6
+	maximum = 10
+Slowest flit = 5910
 Fragmentation average = 0
 	minimum = 0
 	maximum = 0
 Injected packet rate average = 0.099625
 	minimum = 0.081 (at node 0)
 	maximum = 0.121 (at node 5)
-Accepted packet rate average = 0.0996875
+Accepted packet rate average = 0.0995625
 	minimum = 0.081 (at node 15)
 	maximum = 0.122 (at node 10)
 Injected flit rate average = 0.099625
 	minimum = 0.081 (at node 0)
 	maximum = 0.121 (at node 5)
-Accepted flit rate average= 0.0996875
+Accepted flit rate average= 0.0995625
 	minimum = 0.081 (at node 15)
 	maximum = 0.122 (at node 10)
 Injected packet length average = 1
 Accepted packet length average = 1
-Total in-flight flits = 16 (16 measured)
-latency change    = 0.00240614
-throughput change = 0.00815047
+Total in-flight flits = 9 (9 measured)
+latency change    = 8.10958e-05
+throughput change = 0.0100439
 Class 0:
-Packet latency average = 10.0602
-	minimum = 9
-	maximum = 14
-Network latency average = 10.0602
-	minimum = 9
-	maximum = 14
-Slowest packet = 5772
-Flit latency average = 10.0586
-	minimum = 9
-	maximum = 14
-Slowest flit = 5772
+Packet latency average = 6.2493
+	minimum = 6
+	maximum = 10
+Network latency average = 6.2493
+	minimum = 6
+	maximum = 10
+Slowest packet = 5910
+Flit latency average = 6.24899
+	minimum = 6
+	maximum = 10
+Slowest flit = 5910
 Fragmentation average = 0
 	minimum = 0
 	maximum = 0
@@ -356,80 +356,80 @@ Injected packet rate average = 0.100969
 	maximum = 0.1155 (at node 5)
 Accepted packet rate average = 0.100781
 	minimum = 0.0865 (at node 15)
-	maximum = 0.1155 (at node 10)
+	maximum = 0.116 (at node 10)
 Injected flit rate average = 0.100969
 	minimum = 0.087 (at node 0)
 	maximum = 0.1155 (at node 5)
 Accepted flit rate average= 0.100781
 	minimum = 0.0865 (at node 15)
-	maximum = 0.1155 (at node 10)
+	maximum = 0.116 (at node 10)
 Injected packet length average = 1
 Accepted packet length average = 1
-Total in-flight flits = 23 (23 measured)
-latency change    = 0.0021377
-throughput change = 0.0108527
+Total in-flight flits = 14 (14 measured)
+latency change    = 0.00112481
+throughput change = 0.012093
 Class 0:
-Packet latency average = 10.0478
-	minimum = 9
-	maximum = 14
-Network latency average = 10.0478
-	minimum = 9
-	maximum = 14
-Slowest packet = 5772
-Flit latency average = 10.0468
-	minimum = 9
-	maximum = 14
-Slowest flit = 5772
+Packet latency average = 6.2422
+	minimum = 6
+	maximum = 10
+Network latency average = 6.2422
+	minimum = 6
+	maximum = 10
+Slowest packet = 5910
+Flit latency average = 6.24201
+	minimum = 6
+	maximum = 10
+Slowest flit = 5910
 Fragmentation average = 0
 	minimum = 0
 	maximum = 0
 Injected packet rate average = 0.101042
 	minimum = 0.0926667 (at node 0)
 	maximum = 0.117333 (at node 5)
-Accepted packet rate average = 0.101
-	minimum = 0.0923333 (at node 15)
+Accepted packet rate average = 0.100979
+	minimum = 0.0926667 (at node 15)
 	maximum = 0.117 (at node 10)
 Injected flit rate average = 0.101042
 	minimum = 0.0926667 (at node 0)
 	maximum = 0.117333 (at node 5)
-Accepted flit rate average= 0.101
-	minimum = 0.0923333 (at node 15)
+Accepted flit rate average= 0.100979
+	minimum = 0.0926667 (at node 15)
 	maximum = 0.117 (at node 10)
 Injected packet length average = 1
 Accepted packet length average = 1
-Total in-flight flits = 19 (19 measured)
-latency change    = 0.00122872
-throughput change = 0.00216584
+Total in-flight flits = 11 (11 measured)
+latency change    = 0.00113771
+throughput change = 0.00195998
 Draining all recorded packets ...
 Draining remaining packets ...
-Time taken is 6025 cycles
+Time taken is 6016 cycles
 ====== Overall Traffic Statistics ======
 ====== Traffic class 0 ======
-Packet latency average = 10.0487 (1 samples)
-	minimum = 9 (1 samples)
-	maximum = 14 (1 samples)
-Network latency average = 10.0487 (1 samples)
-	minimum = 9 (1 samples)
-	maximum = 14 (1 samples)
-Flit latency average = 10.0499 (1 samples)
-	minimum = 9 (1 samples)
-	maximum = 14 (1 samples)
+Packet latency average = 6.24227 (1 samples)
+	minimum = 6 (1 samples)
+	maximum = 10 (1 samples)
+Network latency average = 6.24227 (1 samples)
+	minimum = 6 (1 samples)
+	maximum = 10 (1 samples)
+Flit latency average = 6.24261 (1 samples)
+	minimum = 6 (1 samples)
+	maximum = 10 (1 samples)
 Fragmentation average = 0 (1 samples)
 	minimum = 0 (1 samples)
 	maximum = 0 (1 samples)
 Injected packet rate average = 0.101042 (1 samples)
 	minimum = 0.0926667 (1 samples)
 	maximum = 0.117333 (1 samples)
-Accepted packet rate average = 0.101 (1 samples)
-	minimum = 0.0923333 (1 samples)
+Accepted packet rate average = 0.100979 (1 samples)
+	minimum = 0.0926667 (1 samples)
 	maximum = 0.117 (1 samples)
 Injected flit rate average = 0.101042 (1 samples)
 	minimum = 0.0926667 (1 samples)
 	maximum = 0.117333 (1 samples)
-Accepted flit rate average = 0.101 (1 samples)
-	minimum = 0.0923333 (1 samples)
+Accepted flit rate average = 0.100979 (1 samples)
+	minimum = 0.0926667 (1 samples)
 	maximum = 0.117 (1 samples)
 Injected packet size average = 1 (1 samples)
 Accepted packet size average = 1 (1 samples)
 Hops average = 2 (1 samples)
-Total run time 0.331116
+Total run time 2.13175

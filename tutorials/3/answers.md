@@ -23,6 +23,11 @@ A: One exmample of an adversarial traffic on a 1D Flattened Butterfly topology c
 
 # Task 1
 
+**From now on, I ran with a single-cycle router. For more information, please refer to 4_Single-Cycle Router.pdf.**
+
+Although the instruction says to implement own adversarial traffic, using bit reverse will suffice for adversarial traffic.
+
+
 1. Simulate a 16-router, 256-nodes 1D Flattened Butterfly node (please adjust the value of k, c, n, 
 x, y, xr, and yr accordingly). Run minimal routing on adversarial traffic. What is the saturation 
 throughput (Hint: plot the latency-throughput graph)? Is it far from the ideal throughput?

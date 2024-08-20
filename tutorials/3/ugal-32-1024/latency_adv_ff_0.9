@@ -1,0 +1,284 @@
+BEGIN Configuration File: ../../booksim2/src/examples/flatflyconfig
+// $Id$
+
+// Copyright (c) 2007-2015, Trustees of The Leland Stanford Junior University
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//
+// Redistributions of source code must retain the above copyright notice, this
+// list of conditions and the following disclaimer.
+// Redistributions in binary form must reproduce the above copyright notice,
+// this list of conditions and the following disclaimer in the documentation
+// and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+
+//A flattened butterfly configurate file with many tweaks from the
+//default settings. 
+
+
+// Flow control
+// Total number of VCs must match the above assignments
+num_vcs     = 2;
+vc_buf_size = 16;
+
+wait_for_tail_credit = 0;
+
+//
+// Router architectureq
+//
+vc_allocator = islip; 
+sw_allocator = islip;
+alloc_iters  = 3;
+
+credit_delay   = 0;
+routing_delay  = 1;
+vc_alloc_delay = 1;
+sw_alloc_delay = 1;
+st_final_delay = 1;
+
+input_speedup     = 1;
+output_speedup    = 1;
+internal_speedup  = 1.6;
+
+//
+// Traffic
+//
+
+warmup_periods = 3;
+
+sample_period  = 1000;  
+
+sim_count          = 1;
+
+traffic       = bitrev;
+
+
+// Flatfly 
+//
+// #node = k^(n+1)
+//
+// x, y, specifies the arrangement of routers in x and y dim
+// xr, yr specifiies the arayment of clients in a router
+//
+topology = flatfly;
+subnets = 1;
+
+c  = 16;
+k  = 16;
+n  = 1;
+
+x  = 16;
+y  = 1;
+xr = 16;
+yr = 1;
+
+use_noc_latency = 0;
+
+//
+// Routing
+//
+
+routing_function = ugal;
+
+//1: batch mode, 0: injection mode
+use_read_write = 0;
+
+//for injection mode
+packet_size = 1;
+injection_rate = 0.1;
+
+//for batch mode
+read_request_size=1;
+write_request_size=1;
+read_reply_size=1;
+write_reply_size=1;
+
+read_request_begin_vc  = 0;
+read_request_end_vc    = 3;
+write_reply_begin_vc   = 4;
+write_reply_end_vc     = 7;
+read_reply_begin_vc    = 4;
+read_reply_end_vc      = 7;
+write_request_begin_vc = 0;
+write_request_end_vc   = 3;
+
+//latency: drains all packet, throughput:no drain?
+sim_type = latency;
+
+watch_out = -;;END Configuration File: ../../booksim2/src/examples/flatflyconfig
+OVERRIDE Parameter: routing_function=ugal
+OVERRIDE Parameter: traffic=bitcomp
+OVERRIDE Parameter: injection_rate={0.9}
+OVERRIDE Parameter: c=32
+OVERRIDE Parameter: k=32
+OVERRIDE Parameter: x=32
+OVERRIDE Parameter: xr=32
+OVERRIDE Parameter: sim_type=latency
+OVERRIDE Parameter: seed=1
+ Flat Bufferfly 
+ k = 32 n = 1 c = 32
+ each switch - total radix =  63
+ # of switches = 32
+ # of channels = 992
+ # of nodes ( size of network ) = 1024
+0 | node1 | Enqueuing flit 1 (packet 1) at time 0.
+0 | traffic_manager | Finding output VC for flit 1:
+0 | traffic_manager |   Selected output VC 0.
+0 | node1 | Injecting flit 1 into subnet 0 at time 0 with priority 0.
+1 | network_0/network_0_fchan_ingress1 | Beginning channel traversal for flit 1 with delay 1.
+1 | network_0/network_0_fchan_ingress1 | Completed channel traversal for flit 1.
+2 | network_0/router_0 | Received flit 1 from channel at input 1.
+2 | network_0/router_0 | Adding flit 1 to VC 0 at input 1 (state: idle, empty).
+2 | network_0/router_0/buf_1/vc_0 | Changing state from idle to routing.
+2 | network_0/router_0 | Beginning routing for VC 0 at input 1 (front: 1).
+2 | network_0/router_0 | Completed routing for VC 0 at input 1 (front: 1).
+2 | network_0/router_0 |  MIN tmp_out_port: 622 | network_0/router_0 |  NONMIN tmp_out_port: 49
+2 | network_0/router_0/buf_1/vc_0 | Changing state from routing to vc_alloc.
+2 | network_0/router_0 | Beginning VC allocation for VC 0 at input 1 (front: 1).
+2 | network_0/router_0 |   Requesting VC 1 at output 62 (in_pri: 0, out_pri: 0).
+2 | network_0/router_0/vc_allocator | Input requests = [ 0 -> [ 125@0 ]  2 -> [ 125@0 ]  4 -> [ 125@0 ]  6 -> [ 125@0 ]  8 -> [ 125@0 ]  10 -> [ 125@0 ]  12 -> [ 125@0 ]  14 -> [ 125@0 ]  16 -> [ 125@0 ]  18 -> [ 125@0 ]  20 -> [ 125@0 ]  22 -> [ 125@0 ]  24 -> [ 125@0 ]  26 -> [ 125@0 ]  28 -> [ 125@0 ]  30 -> [ 125@0 ]  32 -> [ 125@0 ]  34 -> [ 125@0 ]  36 -> [ 125@0 ]  38 -> [ 125@0 ]  40 -> [ 125@0 ]  42 -> [ 125@0 ]  44 -> [ 125@0 ]  46 -> [ 125@0 ]  48 -> [ 125@0 ]  52 -> [ 125@0 ]  54 -> [ 125@0 ]  56 -> [ 125@0 ]  58 -> [ 125@0 ]  60 -> [ 125@0 ]  62 -> [ 125@0 ]  ], output requests = [ 125 -> [ 0@0 2@0 4@0 6@0 8@0 10@0 12@0 14@0 16@0 18@0 20@0 22@0 24@0 26@0 28@0 30@0 32@0 34@0 36@0 38@0 40@0 42@0 44@0 46@0 48@0 52@0 54@0 56@0 58@0 60@0 62@0 ]  ].
+2 | network_0/router_0/vc_allocator | Input grants = [ 0 -> 125  ], output grants = [ 125 -> 0  ].
+2 | network_0/router_0 | VC allocation failed for VC 0 at input 1.
+2 | network_0/router_0 | Completed VC allocation for VC 0 at input 1 (front: 1).
+2 | network_0/router_0 |   No output VC allocated.
+3 | network_0/router_0 | Beginning VC allocation for VC 0 at input 1 (front: 1).
+3 | network_0/router_0 |   Requesting VC 1 at output 62 (in_pri: 0, out_pri: 0).
+3 | network_0/router_0/vc_allocator | Input requests = [ 1 -> [ 74@0 ]  2 -> [ 125@0 ]  3 -> [ 108@0 ]  4 -> [ 125@0 ]  5 -> [ 116@0 ]  6 -> [ 125@0 ]  7 -> [ 106@0 ]  8 -> [ 125@0 ]  9 -> [ 76@0 ]  10 -> [ 125@0 ]  11 -> [ 66@0 ]  12 -> [ 125@0 ]  13 -> [ 70@0 ]  14 -> [ 125@0 ]  15 -> [ 72@0 ]  16 -> [ 125@0 ]  17 -> [ 114@0 ]  18 -> [ 125@0 ]  19 -> [ 114@0 ]  20 -> [ 125@0 ]  21 -> [ 108@0 ]  22 -> [ 125@0 ]  23 -> [ 118@0 ]  24 -> [ 125@0 ]  25 -> [ 100@0 ]  26 -> [ 125@0 ]  27 -> [ 120@0 ]  28 -> [ 125@0 ]  29 -> [ 72@0 ]  30 -> [ 125@0 ]  32 -> [ 125@0 ]  34 -> [ 125@0 ]  35 -> [ 112@0 ]  36 -> [ 125@0 ]  37 -> [ 114@0 ]  38 -> [ 125@0 ]  39 -> [ 94@0 ]  40 -> [ 125@0 ]  41 -> [ 76@0 ]  42 -> [ 125@0 ]  43 -> [ 88@0 ]  44 -> [ 125@0 ]  45 -> [ 125@0 ]  46 -> [ 125@0 ]  48 -> [ 125@0 ]  49 -> [ 92@0 ]  50 -> [ 96@0 ]  52 -> [ 125@0 ]  53 -> [ 100@0 ]  54 -> [ 125@0 ]  55 -> [ 78@0 ]  56 -> [ 125@0 ]  57 -> [ 104@0 ]  58 -> [ 125@0 ]  59 -> [ 90@0 ]  60 -> [ 125@0 ]  61 -> [ 82@0 ]  62 -> [ 125@0 ]  63 -> [ 74@0 ]  ], output requests = [ 66 -> [ 11@0 ]  70 -> [ 13@0 ]  72 -> [ 15@0 29@0 ]  74 -> [ 1@0 63@0 ]  76 -> [ 9@0 41@0 ]  78 -> [ 55@0 ]  82 -> [ 61@0 ]  88 -> [ 43@0 ]  90 -> [ 59@0 ]  92 -> [ 49@0 ]  94 -> [ 39@0 ]  96 -> [ 50@0 ]  100 -> [ 25@0 53@0 ]  104 -> [ 57@0 ]  106 -> [ 7@0 ]  108 -> [ 3@0 21@0 ]  112 -> [ 35@0 ]  114 -> [ 17@0 19@0 37@0 ]  116 -> [ 5@0 ]  118 -> [ 23@0 ]  120 -> [ 27@0 ]  125 -> [ 2@0 4@0 6@0 8@0 10@0 12@0 14@0 16@0 18@0 20@0 22@0 24@0 26@0 28@0 30@0 32@0 34@0 36@0 38@0 40@0 42@0 44@0 45@0 46@0 48@0 52@0 54@0 56@0 58@0 60@0 62@0 ]  ].
+3 | network_0/router_0/vc_allocator | Input grants = [ 1 -> 74  2 -> 125  3 -> 108  5 -> 116  7 -> 106  9 -> 76  11 -> 66  13 -> 70  15 -> 72  17 -> 114  23 -> 118  25 -> 100  27 -> 120  35 -> 112  39 -> 94  43 -> 88  49 -> 92  50 -> 96  55 -> 78  57 -> 104  59 -> 90  61 -> 82  ], output grants = [ 66 -> 11  70 -> 13  72 -> 15  74 -> 1  76 -> 9  78 -> 55  82 -> 61  88 -> 43  90 -> 59  92 -> 49  94 -> 39  96 -> 50  100 -> 25  104 -> 57  106 -> 7  108 -> 3  112 -> 35  114 -> 17  116 -> 5  118 -> 23  120 -> 27  125 -> 2  ].
+3 | network_0/router_0 | Assigning VC 1 at output 62 to VC 0 at input 1.
+3 | network_0/router_0 | Completed VC allocation for VC 0 at input 1 (front: 1).
+3 | network_0/router_0 |   Acquiring assigned VC 1 at output 62.
+3 | network_0/router_0/buf_1/vc_0 | Changing state from vc_alloc to active.
+3 | network_0/router_0 | Beginning switch allocation for VC 0 at input 1 (front: 1).
+3 | network_0/router_0 |   Requesting output 62.0 (non-spec, pri: 0).
+3 | network_0/router_0/sw_allocator | Input requests = [ 0 -> [ 37@0 ]  1 -> [ 54@0 62@0 ]  2 -> [ 58@0 ]  3 -> [ 53@0 ]  4 -> [ 38@0 ]  5 -> [ 33@0 ]  6 -> [ 35@0 ]  7 -> [ 36@0 ]  8 -> [ 57@0 ]  11 -> [ 59@0 ]  12 -> [ 50@0 ]  13 -> [ 60@0 ]  17 -> [ 56@0 ]  19 -> [ 47@0 ]  21 -> [ 44@0 ]  24 -> [ 46@0 ]  25 -> [ 48@0 ]  27 -> [ 39@0 ]  28 -> [ 52@0 ]  29 -> [ 45@0 ]  30 -> [ 41@0 ]  ], output requests = [ 33 -> [ 5@0 ]  35 -> [ 6@0 ]  36 -> [ 7@0 ]  37 -> [ 0@0 ]  38 -> [ 4@0 ]  39 -> [ 27@0 ]  41 -> [ 30@0 ]  44 -> [ 21@0 ]  45 -> [ 29@0 ]  46 -> [ 24@0 ]  47 -> [ 19@0 ]  48 -> [ 25@0 ]  50 -> [ 12@0 ]  52 -> [ 28@0 ]  53 -> [ 3@0 ]  54 -> [ 1@0 ]  56 -> [ 17@0 ]  57 -> [ 8@0 ]  58 -> [ 2@0 ]  59 -> [ 11@0 ]  60 -> [ 13@0 ]  62 -> [ 1@0 ]  ].
+3 | network_0/router_0/sw_allocator | Input grants = [ 0 -> 37  1 -> 54  2 -> 58  3 -> 53  4 -> 38  5 -> 33  6 -> 35  7 -> 36  8 -> 57  11 -> 59  12 -> 50  13 -> 60  17 -> 56  19 -> 47  21 -> 44  24 -> 46  25 -> 48  27 -> 39  28 -> 52  29 -> 45  30 -> 41  ], output grants = [ 33 -> 5  35 -> 6  36 -> 7  37 -> 0  38 -> 4  39 -> 27  41 -> 30  44 -> 21  45 -> 29  46 -> 24  47 -> 19  48 -> 25  50 -> 12  52 -> 28  53 -> 3  54 -> 1  56 -> 17  57 -> 8  58 -> 2  59 -> 11  60 -> 13  ].
+3 | network_0/router_0 | Switch allocation failed for VC 0 at input 1: Granted to VC 1.
+3 | network_0/router_0 | Completed switch allocation for VC 0 at input 1 (front: 1).
+3 | network_0/router_0 |   No output port allocated.
+3 | network_0/router_0 | Beginning switch allocation for VC 0 at input 1 (front: 1).
+3 | network_0/router_0 |   Requesting output 62.0 (non-spec, pri: 0).
+3 | network_0/router_0/sw_allocator | Input requests = [ 1 -> [ 62@0 ]  9 -> [ 57@0 ]  10 -> [ 54@0 ]  14 -> [ 36@0 ]  20 -> [ 38@0 ]  26 -> [ 50@0 ]  31 -> [ 37@0 ]  ], output requests = [ 36 -> [ 14@0 ]  37 -> [ 31@0 ]  38 -> [ 20@0 ]  50 -> [ 26@0 ]  54 -> [ 10@0 ]  57 -> [ 9@0 ]  62 -> [ 1@0 ]  ].
+3 | network_0/router_0/sw_allocator | Input grants = [ 1 -> 62  9 -> 57  10 -> 54  14 -> 36  20 -> 38  26 -> 50  31 -> 37  ], output grants = [ 36 -> 14  37 -> 31  38 -> 20  50 -> 26  54 -> 10  57 -> 9  62 -> 1  ].
+3 | network_0/router_0 | Assigning output 62.0 to VC 0 at input 1.0.
+3 | network_0/router_0 | Completed switch allocation for VC 0 at input 1 (front: 1).
+3 | network_0/router_0 |   Scheduling switch connection from input 1.0 to output 62.0.
+3 | network_0/router_0 | Beginning crossbar traversal for flit 1 from input 1.0 to output 62.0.
+3 | network_0/router_0 | Completed crossbar traversal for flit 1 from input 1.0 to output 62.0.
+3 | network_0/router_0 | Buffering flit 1 at output 62.
+3 | network_0/router_0 | Sending flit 1 to channel at output 62.
+4 | network_0/network_0_fchan_30 | Beginning channel traversal for flit 1 with delay 1.
+4 | network_0/network_0_fchan_30 | Completed channel traversal for flit 1.
+5 | network_0/router_31 | Received flit 1 from channel at input 32.
+5 | network_0/router_31 | Adding flit 1 to VC 1 at input 32 (state: idle, empty).
+5 | network_0/router_31/buf_32/vc_1 | Changing state from idle to routing.
+5 | network_0/router_31 | Beginning routing for VC 1 at input 32 (front: 1).
+5 | network_0/router_31 | Completed routing for VC 1 at input 32 (front: 1).
+5 | network_0/router_31/buf_32/vc_1 | Changing state from routing to vc_alloc.
+5 | network_0/router_31 | Beginning VC allocation for VC 1 at input 32 (front: 1).
+5 | network_0/router_31 |   Requesting VC 0 at output 30 (in_pri: 0, out_pri: 0).
+5 | network_0/router_31 |   Requesting VC 1 at output 30 (in_pri: 0, out_pri: 0).
+5 | network_0/router_31/vc_allocator | Input requests = [ 0 -> [ 82@0 ]  3 -> [ 65@0 ]  4 -> [ 65@0 ]  5 -> [ 110@0 ]  7 -> [ 72@0 ]  8 -> [ 82@0 ]  9 -> [ 114@0 ]  10 -> [ 65@0 ]  11 -> [ 65@0 ]  12 -> [ 65@0 ]  14 -> [ 65@0 ]  15 -> [ 114@0 ]  16 -> [ 65@0 ]  17 -> [ 65@0 ]  18 -> [ 65@0 ]  19 -> [ 65@0 ]  22 -> [ 65@0 ]  23 -> [ 65@0 ]  24 -> [ 65@0 ]  25 -> [ 120@0 ]  26 -> [ 65@0 ]  27 -> [ 104@0 ]  28 -> [ 106@0 ]  30 -> [ 65@0 ]  31 -> [ 65@0 ]  32 -> [ 65@0 ]  33 -> [ 72@0 ]  34 -> [ 65@0 ]  35 -> [ 92@0 ]  36 -> [ 65@0 ]  37 -> [ 86@0 ]  38 -> [ 65@0 ]  39 -> [ 65@0 ]  40 -> [ 65@0 ]  42 -> [ 65@0 ]  43 -> [ 65@0 ]  44 -> [ 65@0 ]  45 -> [ 65@0 ]  46 -> [ 65@0 ]  47 -> [ 65@0 ]  48 -> [ 65@0 ]  49 -> [ 65@0 ]  50 -> [ 65@0 ]  51 -> [ 65@0 ]  52 -> [ 65@0 ]  53 -> [ 94@0 ]  54 -> [ 74@0 ]  56 -> [ 65@0 ]  57 -> [ 90@0 ]  58 -> [ 65@0 ]  59 -> [ 120@0 ]  60 -> [ 65@0 ]  62 -> [ 65@0 ]  63 -> [ 65@0 ]  65 -> [ 60@0 61@0 ]  66 -> [ 125@0 ]  70 -> [ 121@0 ]  72 -> [ 119@0 ]  74 -> [ 117@0 ]  78 -> [ 113@0 ]  80 -> [ 111@0 ]  82 -> [ 109@0 ]  84 -> [ 107@0 ]  86 -> [ 105@0 ]  90 -> [ 101@0 ]  92 -> [ 99@0 ]  96 -> [ 95@0 ]  98 -> [ 93@0 ]  100 -> [ 91@0 ]  102 -> [ 89@0 ]  106 -> [ 85@0 ]  108 -> [ 83@0 ]  114 -> [ 77@0 ]  118 -> [ 73@0 ]  124 -> [ 67@0 ]  ], output requests = [ 60 -> [ 65@0 ]  61 -> [ 65@0 ]  65 -> [ 3@0 4@0 10@0 11@0 12@0 14@0 16@0 17@0 18@0 19@0 22@0 23@0 24@0 26@0 30@0 31@0 32@0 34@0 36@0 38@0 39@0 40@0 42@0 43@0 44@0 45@0 46@0 47@0 48@0 49@0 50@0 51@0 52@0 56@0 58@0 60@0 62@0 63@0 ]  67 -> [ 124@0 ]  72 -> [ 7@0 33@0 ]  73 -> [ 118@0 ]  74 -> [ 54@0 ]  77 -> [ 114@0 ]  82 -> [ 0@0 8@0 ]  83 -> [ 108@0 ]  85 -> [ 106@0 ]  86 -> [ 37@0 ]  89 -> [ 102@0 ]  90 -> [ 57@0 ]  91 -> [ 100@0 ]  92 -> [ 35@0 ]  93 -> [ 98@0 ]  94 -> [ 53@0 ]  95 -> [ 96@0 ]  99 -> [ 92@0 ]  101 -> [ 90@0 ]  104 -> [ 27@0 ]  105 -> [ 86@0 ]  106 -> [ 28@0 ]  107 -> [ 84@0 ]  109 -> [ 82@0 ]  110 -> [ 5@0 ]  111 -> [ 80@0 ]  113 -> [ 78@0 ]  114 -> [ 9@0 15@0 ]  117 -> [ 74@0 ]  119 -> [ 72@0 ]  120 -> [ 25@0 59@0 ]  121 -> [ 70@0 ]  125 -> [ 66@0 ]  ].
+5 | network_0/router_31/vc_allocator | Input grants = [ 0 -> 82  5 -> 110  7 -> 72  9 -> 114  10 -> 65  25 -> 120  27 -> 104  28 -> 106  35 -> 92  37 -> 86  53 -> 94  54 -> 74  57 -> 90  65 -> 60  66 -> 125  70 -> 121  72 -> 119  74 -> 117  78 -> 113  80 -> 111  82 -> 109  84 -> 107  86 -> 105  90 -> 101  92 -> 99  96 -> 95  98 -> 93  100 -> 91  102 -> 89  106 -> 85  108 -> 83  114 -> 77  118 -> 73  124 -> 67  ], output grants = [ 60 -> 65  65 -> 10  67 -> 124  72 -> 7  73 -> 118  74 -> 54  77 -> 114  82 -> 0  83 -> 108  85 -> 106  86 -> 37  89 -> 102  90 -> 57  91 -> 100  92 -> 35  93 -> 98  94 -> 53  95 -> 96  99 -> 92  101 -> 90  104 -> 27  105 -> 86  106 -> 28  107 -> 84  109 -> 82  110 -> 5  111 -> 80  113 -> 78  114 -> 9  117 -> 74  119 -> 72  120 -> 25  121 -> 70  125 -> 66  ].
+5 | network_0/router_31 | Assigning VC 0 at output 30 to VC 1 at input 32.
+5 | network_0/router_31 | Completed VC allocation for VC 1 at input 32 (front: 1).
+5 | network_0/router_31 |   Acquiring assigned VC 0 at output 30.
+5 | network_0/router_31/buf_32/vc_1 | Changing state from vc_alloc to active.
+5 | network_0/router_31 | Beginning switch allocation for VC 1 at input 32 (front: 1).
+5 | network_0/router_31 |   Requesting output 30.0 (non-spec, pri: 0).
+5 | network_0/router_31/sw_allocator | Input requests = [ 0 -> [ 41@0 ]  2 -> [ 55@0 ]  3 -> [ 36@0 ]  4 -> [ 57@0 ]  5 -> [ 32@0 ]  12 -> [ 60@0 ]  13 -> [ 52@0 ]  14 -> [ 53@0 ]  17 -> [ 46@0 ]  18 -> [ 43@0 ]  26 -> [ 47@0 ]  27 -> [ 37@0 ]  28 -> [ 45@0 ]  32 -> [ 30@0 ]  33 -> [ 62@0 ]  35 -> [ 60@0 ]  36 -> [ 59@0 ]  37 -> [ 58@0 ]  39 -> [ 56@0 ]  40 -> [ 55@0 ]  41 -> [ 54@0 ]  42 -> [ 53@0 ]  43 -> [ 52@0 ]  45 -> [ 50@0 ]  46 -> [ 49@0 ]  48 -> [ 47@0 ]  49 -> [ 46@0 ]  50 -> [ 45@0 ]  51 -> [ 44@0 ]  53 -> [ 42@0 ]  54 -> [ 41@0 ]  57 -> [ 38@0 ]  59 -> [ 36@0 ]  62 -> [ 33@0 ]  ], output requests = [ 30 -> [ 32@0 ]  32 -> [ 5@0 ]  33 -> [ 62@0 ]  36 -> [ 3@0 59@0 ]  37 -> [ 27@0 ]  38 -> [ 57@0 ]  41 -> [ 0@0 54@0 ]  42 -> [ 53@0 ]  43 -> [ 18@0 ]  44 -> [ 51@0 ]  45 -> [ 28@0 50@0 ]  46 -> [ 17@0 49@0 ]  47 -> [ 26@0 48@0 ]  49 -> [ 46@0 ]  50 -> [ 45@0 ]  52 -> [ 13@0 43@0 ]  53 -> [ 14@0 42@0 ]  54 -> [ 41@0 ]  55 -> [ 2@0 40@0 ]  56 -> [ 39@0 ]  57 -> [ 4@0 ]  58 -> [ 37@0 ]  59 -> [ 36@0 ]  60 -> [ 12@0 35@0 ]  62 -> [ 33@0 ]  ].
+5 | network_0/router_31/sw_allocator | Input grants = [ 0 -> 41  2 -> 55  3 -> 36  4 -> 57  5 -> 32  12 -> 60  13 -> 52  14 -> 53  17 -> 46  18 -> 43  26 -> 47  27 -> 37  28 -> 45  32 -> 30  33 -> 62  36 -> 59  37 -> 58  39 -> 56  41 -> 54  45 -> 50  46 -> 49  51 -> 44  53 -> 42  57 -> 38  62 -> 33  ], output grants = [ 30 -> 32  32 -> 5  33 -> 62  36 -> 3  37 -> 27  38 -> 57  41 -> 0  42 -> 53  43 -> 18  44 -> 51  45 -> 28  46 -> 17  47 -> 26  49 -> 46  50 -> 45  52 -> 13  53 -> 14  54 -> 41  55 -> 2  56 -> 39  57 -> 4  58 -> 37  59 -> 36  60 -> 12  62 -> 33  ].
+5 | network_0/router_31 | Assigning output 30.0 to VC 1 at input 32.0.
+5 | network_0/router_31 | Completed switch allocation for VC 1 at input 32 (front: 1).
+5 | network_0/router_31 |   Scheduling switch connection from input 32.0 to output 30.0.
+5 | network_0/router_31 | Beginning crossbar traversal for flit 1 from input 32.0 to output 30.0.
+5 | network_0/router_31 | Completed crossbar traversal for flit 1 from input 32.0 to output 30.0.
+5 | network_0/router_31 | Buffering flit 1 at output 30.
+5 | network_0/router_31 | Sending flit 1 to channel at output 30.
+6 | network_0/network_0_fchan_egress1022 | Beginning channel traversal for flit 1 with delay 1.
+6 | network_0/network_0_fchan_egress1022 | Completed channel traversal for flit 1.
+7 | node1022 | Ejecting flit 1 (packet 1) from VC 0.
+7 | node1022 | Injecting credit for VC 0 into subnet 0.
+7 | node1022 | Retiring flit 1 (packet 1, src = 1, dest = 1022, hops = 2, flat = 7).
+7 | node1022 | Retiring packet 1 (plat = 7, nlat = 7, frag = 0, src = 1, dest = 1022).
+Class 0:
+Packet latency average = 343.133
+	minimum = 6
+	maximum = 886
+Network latency average = 106.8
+	minimum = 6
+	maximum = 702
+Slowest packet = 42295
+Flit latency average = 106.8
+	minimum = 6
+	maximum = 702
+Slowest flit = 115944
+Fragmentation average = 0
+	minimum = 0
+	maximum = 0
+Injected packet rate average = 0.31175
+	minimum = 0.171 (at node 480)
+	maximum = 0.54 (at node 336)
+Accepted packet rate average = 0.277949
+	minimum = 0.139 (at node 543)
+	maximum = 0.502 (at node 687)
+Injected flit rate average = 0.31175
+	minimum = 0.171 (at node 480)
+	maximum = 0.54 (at node 336)
+Accepted flit rate average= 0.277949
+	minimum = 0.139 (at node 543)
+	maximum = 0.502 (at node 687)
+Injected packet length average = 1
+Accepted packet length average = 1
+Total in-flight flits = 35355 (0 measured)
+latency change    = 1
+throughput change = 1
+Class 0:
+Packet latency average = 686.994
+	minimum = 6
+	maximum = 1710
+Network latency average = 113.2
+	minimum = 6
+	maximum = 759
+Slowest packet = 42295
+Flit latency average = 113.2
+	minimum = 6
+	maximum = 759
+Slowest flit = 114823
+Fragmentation average = 0
+	minimum = 0
+	maximum = 0
+Injected packet rate average = 0.297335
+	minimum = 0.176 (at node 284)
+	maximum = 0.432 (at node 276)
+Accepted packet rate average = 0.280421
+	minimum = 0.157 (at node 739)
+	maximum = 0.415 (at node 724)
+Injected flit rate average = 0.297335
+	minimum = 0.176 (at node 284)
+	maximum = 0.432 (at node 276)
+Accepted flit rate average= 0.280421
+	minimum = 0.157 (at node 739)
+	maximum = 0.415 (at node 724)
+Injected packet length average = 1
+Accepted packet length average = 1
+Total in-flight flits = 35366 (0 measured)
+latency change    = 0.500531
+throughput change = 0.00881418
+Average latency for class 0 exceeded 500 cycles. Aborting simulation.
+Too many sample periods needed to converge
+Simulation unstable, ending ...
+Total run time 4773.34
