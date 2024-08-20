@@ -39,7 +39,7 @@ A:
 average hop count: 2.98263 (measured)
 average link number: 3.98263
 
-$3*2.98263 + 1*3.98263 = 12.93052$
+$3 \times 2.98263 + 1 \times 3.98263 = 12.93052$
 
 
 2. Compare your expected zero-load latency with the BookSim result. Are they the same?
