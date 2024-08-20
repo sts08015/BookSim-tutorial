@@ -36,8 +36,14 @@ $T_0$: zero-load latency, $H_{min}$: average hop count, $t_r$: average router de
 1. Using the values obtained from table 1, count (by hand) your expected zero-load latency for a 8node 1D torus.
 
 A:
-average hop count: 
+average hop count: 2.98263 (measured)
+average link number: 3.98263
+
+$3*2.98263 + 1*3.98263 = 12.93052$
+
 
 2. Compare your expected zero-load latency with the BookSim result. Are they the same?
 
 A: BookSim result: 13.3832
+
+0.45268 difference.
