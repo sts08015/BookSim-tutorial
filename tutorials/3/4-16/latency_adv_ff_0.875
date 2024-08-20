@@ -118,9 +118,7 @@ write_request_end_vc   = 3;
 //latency: drains all packet, throughput:no drain?
 sim_type = latency;
 
-watch_out = -;
-
-END Configuration File: ../../booksim2/src/examples/flatflyconfig
+watch_out = -;;END Configuration File: ../../booksim2/src/examples/flatflyconfig
 OVERRIDE Parameter: traffic=bitcomp
 OVERRIDE Parameter: injection_rate={0.875}
 OVERRIDE Parameter: c=4
@@ -128,6 +126,7 @@ OVERRIDE Parameter: k=4
 OVERRIDE Parameter: x=4
 OVERRIDE Parameter: xr=4
 OVERRIDE Parameter: sim_type=latency
+OVERRIDE Parameter: seed=1
  Flat Bufferfly 
  k = 4 n = 1 c = 4
  each switch - total radix =  7
@@ -164,7 +163,7 @@ OVERRIDE Parameter: sim_type=latency
 3 | network_0/router_0 |   No output VC allocated.
 4 | network_0/router_0 | Beginning VC allocation for VC 0 at input 1 (front: 1).
 4 | network_0/router_0 |   Requesting VC 0 at output 6 (in_pri: 0, out_pri: 0).
-4 | network_0/router_0 |   VC 1 at output 6 is in use by VC 1 at input 0 (front flit: 16).
+4 | network_0/router_0 |   VC 1 at output 6 is in use by VC 1 at input 0 (front flit: 15).
 4 | network_0/router_0/vc_allocator | Input requests = [ 2 -> [ 12@0 ]  3 -> [ 12@0 ]  4 -> [ 12@0 ]  5 -> [ 12@0 ]  6 -> [ 12@0 ]  7 -> [ 12@0 ]  ], output requests = [ 12 -> [ 2@0 3@0 4@0 5@0 6@0 7@0 ]  ].
 4 | network_0/router_0/vc_allocator | Input grants = [ 2 -> 12  ], output grants = [ 12 -> 2  ].
 4 | network_0/router_0 | Assigning VC 0 at output 6 to VC 0 at input 1.
@@ -217,17 +216,17 @@ OVERRIDE Parameter: sim_type=latency
 11 | node14 | Retiring flit 1 (packet 1, src = 1, dest = 14, hops = 2, flat = 11).
 11 | node14 | Retiring packet 1 (plat = 11, nlat = 11, frag = 0, src = 1, dest = 14).
 Class 0:
-Packet latency average = 364.788
+Packet latency average = 363.91
 	minimum = 10
 	maximum = 728
-Network latency average = 143.273
+Network latency average = 143.238
 	minimum = 10
 	maximum = 159
-Slowest packet = 761
-Flit latency average = 143.273
+Slowest packet = 787
+Flit latency average = 143.238
 	minimum = 10
 	maximum = 159
-Slowest flit = 761
+Slowest flit = 787
 Fragmentation average = 0
 	minimum = 0
 	maximum = 0
@@ -249,17 +248,17 @@ Total in-flight flits = 648 (0 measured)
 latency change    = 1
 throughput change = 1
 Class 0:
-Packet latency average = 722.176
+Packet latency average = 721.863
 	minimum = 10
 	maximum = 1446
-Network latency average = 151.126
+Network latency average = 151.109
 	minimum = 10
 	maximum = 159
-Slowest packet = 761
-Flit latency average = 151.126
+Slowest packet = 787
+Flit latency average = 151.109
 	minimum = 10
 	maximum = 159
-Slowest flit = 761
+Slowest flit = 787
 Fragmentation average = 0
 	minimum = 0
 	maximum = 0
@@ -278,9 +277,9 @@ Accepted flit rate average= 0.24875
 Injected packet length average = 1
 Accepted packet length average = 1
 Total in-flight flits = 648 (0 measured)
-latency change    = 0.494876
+latency change    = 0.495874
 throughput change = 0.00502513
 Average latency for class 0 exceeded 500 cycles. Aborting simulation.
 Too many sample periods needed to converge
 Simulation unstable, ending ...
-Total run time 0.180677
+Total run time 0.216438

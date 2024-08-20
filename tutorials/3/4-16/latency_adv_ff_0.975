@@ -118,9 +118,7 @@ write_request_end_vc   = 3;
 //latency: drains all packet, throughput:no drain?
 sim_type = latency;
 
-watch_out = -;
-
-END Configuration File: ../../booksim2/src/examples/flatflyconfig
+watch_out = -;;END Configuration File: ../../booksim2/src/examples/flatflyconfig
 OVERRIDE Parameter: traffic=bitcomp
 OVERRIDE Parameter: injection_rate={0.975}
 OVERRIDE Parameter: c=4
@@ -128,6 +126,7 @@ OVERRIDE Parameter: k=4
 OVERRIDE Parameter: x=4
 OVERRIDE Parameter: xr=4
 OVERRIDE Parameter: sim_type=latency
+OVERRIDE Parameter: seed=1
  Flat Bufferfly 
  k = 4 n = 1 c = 4
  each switch - total radix =  7
@@ -217,17 +216,17 @@ OVERRIDE Parameter: sim_type=latency
 11 | node14 | Retiring flit 1 (packet 1, src = 1, dest = 14, hops = 2, flat = 11).
 11 | node14 | Retiring packet 1 (plat = 11, nlat = 11, frag = 0, src = 1, dest = 14).
 Class 0:
-Packet latency average = 378.379
+Packet latency average = 378.318
 	minimum = 10
-	maximum = 749
-Network latency average = 143.874
-	minimum = 10
-	maximum = 159
-Slowest packet = 771
-Flit latency average = 143.874
+	maximum = 748
+Network latency average = 143.848
 	minimum = 10
 	maximum = 159
-Slowest flit = 771
+Slowest packet = 782
+Flit latency average = 143.848
+	minimum = 10
+	maximum = 159
+Slowest flit = 782
 Fragmentation average = 0
 	minimum = 0
 	maximum = 0
@@ -249,17 +248,17 @@ Total in-flight flits = 648 (0 measured)
 latency change    = 1
 throughput change = 1
 Class 0:
-Packet latency average = 749.998
+Packet latency average = 750.374
 	minimum = 10
-	maximum = 1493
-Network latency average = 151.425
-	minimum = 10
-	maximum = 159
-Slowest packet = 771
-Flit latency average = 151.425
+	maximum = 1495
+Network latency average = 151.412
 	minimum = 10
 	maximum = 159
-Slowest flit = 771
+Slowest packet = 782
+Flit latency average = 151.412
+	minimum = 10
+	maximum = 159
+Slowest flit = 782
 Fragmentation average = 0
 	minimum = 0
 	maximum = 0
@@ -278,9 +277,9 @@ Accepted flit rate average= 0.24875
 Injected packet length average = 1
 Accepted packet length average = 1
 Total in-flight flits = 648 (0 measured)
-latency change    = 0.495494
+latency change    = 0.495827
 throughput change = 0.00502513
 Average latency for class 0 exceeded 500 cycles. Aborting simulation.
 Too many sample periods needed to converge
 Simulation unstable, ending ...
-Total run time 0.196335
+Total run time 0.262478

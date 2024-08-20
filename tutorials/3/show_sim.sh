@@ -7,5 +7,5 @@ fi
 
 for i in $(seq 0.025 0.025 1.000)
 do
-    grep "Packet latency average" ./$1/latency_adv_ff_${i} | grep sample | awk '{print $5}'
+    grep "Packet latency average" ./$1/latency_$2_ff_${i} | grep sample | awk '{print $5}'
 done

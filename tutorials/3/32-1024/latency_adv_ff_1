@@ -118,9 +118,7 @@ write_request_end_vc   = 3;
 //latency: drains all packet, throughput:no drain?
 sim_type = latency;
 
-watch_out = -;
-
-END Configuration File: ../../booksim2/src/examples/flatflyconfig
+watch_out = -;;END Configuration File: ../../booksim2/src/examples/flatflyconfig
 OVERRIDE Parameter: traffic=bitcomp
 OVERRIDE Parameter: injection_rate={1}
 OVERRIDE Parameter: c=32
@@ -128,6 +126,7 @@ OVERRIDE Parameter: k=32
 OVERRIDE Parameter: x=32
 OVERRIDE Parameter: xr=32
 OVERRIDE Parameter: sim_type=latency
+OVERRIDE Parameter: seed=1
  Flat Bufferfly 
  k = 32 n = 1 c = 32
  each switch - total radix =  63
@@ -251,4 +250,4 @@ throughput change = 1
 Average latency for class 0 exceeded 500 cycles. Aborting simulation.
 Too many sample periods needed to converge
 Simulation unstable, ending ...
-Total run time 15.2976
+Total run time 13.6276

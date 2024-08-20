@@ -43,12 +43,12 @@ A: Reaches saturation point the earliest. (lowest saturation point) The more nod
 # Task 2
 1. How does UGAL work? How does it decide when to route minimally or non-minimally?
 
-A: 
+A: Refer to 5_UGAL.pdf
 
-2. Run the simulation on a 16-router, 256-nodes 1D Flattened Butterfly. What is the saturation throughput achieved by UGAL for minimal and adversarial traffic? Does it approach the ideal saturation throughput for both traffics?
+2. Run the simulation on a 16-router, 256-nodes 1D Flattened Butterfly. What is the saturation throughput achieved by UGAL for uniform random and adversarial traffic? Does it approach the ideal saturation throughput for both traffics?
 
-A: 
+A: Exceeds 500 cycles at Injection Rate of 0.275 for adversarial traffic.
 
-3. Do you think the performance of UGAL will be affected if it is run on different network sizes (16-nodes and 1024-nodes 1D Flattened Butterfly).
+3. Do you think the performance of UGAL will be affected if it is run on different network sizes (32-nodes and 1024-nodes 1D Flattened Butterfly).
 
 A: 
