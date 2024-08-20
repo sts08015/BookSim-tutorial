@@ -27,18 +27,18 @@ A: One exmample of an adversarial traffic on a 1D Flattened Butterfly topology c
 x, y, xr, and yr accordingly). Run minimal routing on adversarial traffic. What is the saturation 
 throughput (Hint: plot the latency-throughput graph)? Is it far from the ideal throughput?
 
-A: 
+A: The cycle exceeds 500 cycles at 0.275 injection rate (packets per flit cycle). IS IT FAR FROM THE IDEAL THROUGHPUT?
 
 2. Similar with question 1, we will run minimal routing on adversarial traffic but on a 4-router, 16-
 nodes 1D Flattened Butterfly. Is the saturation throughput higher/lower than the configuration 
 in Question 1? Why?
 
-A: 
+A: Saturation point is higher than 16-routers setting. The more nodes connected to a router, the more contention happens.
 
 3. Similar with question 1 and 2 but try with a 32-router, 1024-node 1D Flattened Butterfly. How 
 does the saturation throughput compare (higher/lower) with question 1 and 2? Why? 
 
-A:
+A: Reaches saturation point the earliest. (lowest saturation point) The more nodes connected to a router, the more contention happens.
 
 # Task 2
 1. How does UGAL work? How does it decide when to route minimally or non-minimally?
