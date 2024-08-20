@@ -1,0 +1,302 @@
+BEGIN Configuration File: ../../booksim2/src/examples/flatflyconfig
+// $Id$
+
+// Copyright (c) 2007-2015, Trustees of The Leland Stanford Junior University
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//
+// Redistributions of source code must retain the above copyright notice, this
+// list of conditions and the following disclaimer.
+// Redistributions in binary form must reproduce the above copyright notice,
+// this list of conditions and the following disclaimer in the documentation
+// and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+
+//A flattened butterfly configurate file with many tweaks from the
+//default settings. 
+
+
+// Flow control
+// Total number of VCs must match the above assignments
+num_vcs     = 2;
+vc_buf_size = 16;
+
+wait_for_tail_credit = 0;
+
+//
+// Router architectureq
+//
+vc_allocator = islip; 
+sw_allocator = islip;
+alloc_iters  = 3;
+
+credit_delay   = 0;
+routing_delay  = 1;
+vc_alloc_delay = 1;
+sw_alloc_delay = 1;
+st_final_delay = 1;
+
+input_speedup     = 1;
+output_speedup    = 1;
+internal_speedup  = 1.6;
+
+//
+// Traffic
+//
+
+warmup_periods = 3;
+
+sample_period  = 1000;  
+
+sim_count          = 1;
+
+traffic       = bitrev;
+
+
+// Flatfly 
+//
+// #node = k^(n+1)
+//
+// x, y, specifies the arrangement of routers in x and y dim
+// xr, yr specifiies the arayment of clients in a router
+//
+topology = flatfly;
+subnets = 1;
+
+c  = 16;
+k  = 16;
+n  = 1;
+
+x  = 16;
+y  = 1;
+xr = 16;
+yr = 1;
+
+use_noc_latency = 0;
+
+//
+// Routing
+//
+
+routing_function = ran_min;
+
+//1: batch mode, 0: injection mode
+use_read_write = 0;
+
+//for injection mode
+packet_size = 1;
+injection_rate = 0.1;
+
+//for batch mode
+read_request_size=1;
+write_request_size=1;
+read_reply_size=1;
+write_reply_size=1;
+
+read_request_begin_vc  = 0;
+read_request_end_vc    = 3;
+write_reply_begin_vc   = 4;
+write_reply_end_vc     = 7;
+read_reply_begin_vc    = 4;
+read_reply_end_vc      = 7;
+write_request_begin_vc = 0;
+write_request_end_vc   = 3;
+
+//latency: drains all packet, throughput:no drain?
+sim_type = latency;
+
+watch_out = -;
+
+END Configuration File: ../../booksim2/src/examples/flatflyconfig
+OVERRIDE Parameter: traffic=bitcomp
+OVERRIDE Parameter: injection_rate={0.05}
+OVERRIDE Parameter: c=32
+OVERRIDE Parameter: k=32
+OVERRIDE Parameter: x=32
+OVERRIDE Parameter: xr=32
+OVERRIDE Parameter: sim_type=latency
+ Flat Bufferfly 
+ k = 32 n = 1 c = 32
+ each switch - total radix =  63
+ # of switches = 32
+ # of channels = 992
+ # of nodes ( size of network ) = 1024
+0 | node77 | Enqueuing flit 1 (packet 1) at time 0.
+0 | traffic_manager | Finding output VC for flit 1:
+0 | traffic_manager |   Selected output VC 0.
+0 | node77 | Injecting flit 1 into subnet 0 at time 0 with priority 0.
+1 | network_0/network_0_fchan_ingress77 | Beginning channel traversal for flit 1 with delay 1.
+1 | network_0/network_0_fchan_ingress77 | Completed channel traversal for flit 1.
+2 | network_0/router_2 | Received flit 1 from channel at input 13.
+2 | network_0/router_2 | Adding flit 1 to VC 0 at input 13 (state: idle, empty).
+2 | network_0/router_2/buf_13/vc_0 | Changing state from idle to routing.
+2 | network_0/router_2 | Beginning routing for VC 0 at input 13 (front: 1).
+2 | network_0/router_2 | Completed routing for VC 0 at input 13 (front: 1).
+2 | network_0/router_2/buf_13/vc_0 | Changing state from routing to vc_alloc.
+3 | network_0/router_2 | Beginning VC allocation for VC 0 at input 13 (front: 1).
+3 | network_0/router_2 |   Requesting VC 0 at output 60 (in_pri: 0, out_pri: 0).
+3 | network_0/router_2 |   Requesting VC 1 at output 60 (in_pri: 0, out_pri: 0).
+3 | network_0/router_2/vc_allocator | Input requests = [ 26 -> [ 120@0 121@0 ]  40 -> [ 120@0 121@0 ]  ], output requests = [ 120 -> [ 26@0 40@0 ]  121 -> [ 26@0 40@0 ]  ].
+3 | network_0/router_2/vc_allocator | Input grants = [ 26 -> 120  ], output grants = [ 120 -> 26  ].
+3 | network_0/router_2 | Assigning VC 0 at output 60 to VC 0 at input 13.
+3 | network_0/router_2 | Completed VC allocation for VC 0 at input 13 (front: 1).
+3 | network_0/router_2 |   Acquiring assigned VC 0 at output 60.
+3 | network_0/router_2/buf_13/vc_0 | Changing state from vc_alloc to active.
+3 | network_0/router_2 | Beginning switch allocation for VC 0 at input 13 (front: 1).
+3 | network_0/router_2 |   Requesting output 60.0 (non-spec, pri: 0).
+3 | network_0/router_2/sw_allocator | Input requests = [ 13 -> [ 60@0 ]  ], output requests = [ 60 -> [ 13@0 ]  ].
+3 | network_0/router_2/sw_allocator | Input grants = [ 13 -> 60  ], output grants = [ 60 -> 13  ].
+3 | network_0/router_2 | Assigning output 60.0 to VC 0 at input 13.0.
+3 | network_0/router_2 | Completed switch allocation for VC 0 at input 13 (front: 1).
+3 | network_0/router_2 |   Scheduling switch connection from input 13.0 to output 60.0.
+4 | network_0/router_2 | Beginning crossbar traversal for flit 1 from input 13.0 to output 60.0.
+4 | network_0/router_2 | Completed crossbar traversal for flit 1 from input 13.0 to output 60.0.
+4 | network_0/router_2 | Buffering flit 1 at output 60.
+4 | network_0/router_2 | Sending flit 1 to channel at output 60.
+5 | network_0/network_0_fchan_90 | Beginning channel traversal for flit 1 with delay 1.
+5 | network_0/network_0_fchan_90 | Completed channel traversal for flit 1.
+6 | network_0/router_29 | Received flit 1 from channel at input 34.
+6 | network_0/router_29 | Adding flit 1 to VC 0 at input 34 (state: idle, empty).
+6 | network_0/router_29/buf_34/vc_0 | Changing state from idle to routing.
+6 | network_0/router_29 | Beginning routing for VC 0 at input 34 (front: 1).
+6 | network_0/router_29 | Completed routing for VC 0 at input 34 (front: 1).
+6 | network_0/router_29/buf_34/vc_0 | Changing state from routing to vc_alloc.
+6 | network_0/router_29 | Beginning VC allocation for VC 0 at input 34 (front: 1).
+6 | network_0/router_29 |   Requesting VC 0 at output 18 (in_pri: 0, out_pri: 0).
+6 | network_0/router_29 |   Requesting VC 1 at output 18 (in_pri: 0, out_pri: 0).
+6 | network_0/router_29/vc_allocator | Input requests = [ 34 -> [ 69@0 ]  42 -> [ 69@0 ]  68 -> [ 36@0 37@0 ]  ], output requests = [ 36 -> [ 68@0 ]  37 -> [ 68@0 ]  69 -> [ 34@0 42@0 ]  ].
+6 | network_0/router_29/vc_allocator | Input grants = [ 34 -> 69  68 -> 36  ], output grants = [ 36 -> 68  69 -> 34  ].
+6 | network_0/router_29 | Assigning VC 0 at output 18 to VC 0 at input 34.
+6 | network_0/router_29 | Completed VC allocation for VC 0 at input 34 (front: 1).
+6 | network_0/router_29 |   Acquiring assigned VC 0 at output 18.
+6 | network_0/router_29/buf_34/vc_0 | Changing state from vc_alloc to active.
+7 | network_0/router_29 | Beginning switch allocation for VC 0 at input 34 (front: 1).
+7 | network_0/router_29 |   Requesting output 18.0 (non-spec, pri: 0).
+7 | network_0/router_29/sw_allocator | Input requests = [ 17 -> [ 34@0 ]  34 -> [ 18@0 ]  ], output requests = [ 18 -> [ 34@0 ]  34 -> [ 17@0 ]  ].
+7 | network_0/router_29/sw_allocator | Input grants = [ 17 -> 34  34 -> 18  ], output grants = [ 18 -> 34  34 -> 17  ].
+7 | network_0/router_29 | Assigning output 18.0 to VC 0 at input 34.0.
+7 | network_0/router_29 | Completed switch allocation for VC 0 at input 34 (front: 1).
+7 | network_0/router_29 |   Scheduling switch connection from input 34.0 to output 18.0.
+8 | network_0/router_29 | Beginning crossbar traversal for flit 1 from input 34.0 to output 18.0.
+8 | network_0/router_29 | Completed crossbar traversal for flit 1 from input 34.0 to output 18.0.
+8 | network_0/router_29 | Buffering flit 1 at output 18.
+8 | network_0/router_29 | Sending flit 1 to channel at output 18.
+9 | network_0/network_0_fchan_egress946 | Beginning channel traversal for flit 1 with delay 1.
+9 | network_0/network_0_fchan_egress946 | Completed channel traversal for flit 1.
+10 | node946 | Ejecting flit 1 (packet 1) from VC 0.
+10 | node946 | Injecting credit for VC 0 into subnet 0.
+10 | node946 | Retiring flit 1 (packet 1, src = 77, dest = 946, hops = 2, flat = 10).
+10 | node946 | Retiring packet 1 (plat = 10, nlat = 10, frag = 0, src = 77, dest = 946).
+Class 0:
+Packet latency average = 188.47
+	minimum = 9
+	maximum = 632
+Network latency average = 188.47
+	minimum = 9
+	maximum = 632
+Slowest packet = 18230
+Flit latency average = 188.47
+	minimum = 9
+	maximum = 632
+Slowest flit = 18230
+Fragmentation average = 0
+	minimum = 0
+	maximum = 0
+Injected packet rate average = 0.0500107
+	minimum = 0.03 (at node 17)
+	maximum = 0.069 (at node 135)
+Accepted packet rate average = 0.0309141
+	minimum = 0.023 (at node 11)
+	maximum = 0.038 (at node 934)
+Injected flit rate average = 0.0500107
+	minimum = 0.03 (at node 17)
+	maximum = 0.069 (at node 135)
+Accepted flit rate average= 0.0309141
+	minimum = 0.023 (at node 11)
+	maximum = 0.038 (at node 934)
+Injected packet length average = 1
+Accepted packet length average = 1
+Total in-flight flits = 19580 (0 measured)
+latency change    = 1
+throughput change = 1
+Class 0:
+Packet latency average = 375.259
+	minimum = 9
+	maximum = 1109
+Network latency average = 375.251
+	minimum = 9
+	maximum = 1055
+Slowest packet = 36933
+Flit latency average = 375.251
+	minimum = 9
+	maximum = 1055
+Slowest flit = 43859
+Fragmentation average = 0
+	minimum = 0
+	maximum = 0
+Injected packet rate average = 0.0466753
+	minimum = 0.0365 (at node 2)
+	maximum = 0.051 (at node 4)
+Accepted packet rate average = 0.031082
+	minimum = 0.027 (at node 820)
+	maximum = 0.035 (at node 1019)
+Injected flit rate average = 0.0466753
+	minimum = 0.0365 (at node 2)
+	maximum = 0.051 (at node 4)
+Accepted flit rate average= 0.031082
+	minimum = 0.027 (at node 820)
+	maximum = 0.035 (at node 1019)
+Injected packet length average = 1
+Accepted packet length average = 1
+Total in-flight flits = 32610 (0 measured)
+latency change    = 0.497759
+throughput change = 0.00540405
+Class 0:
+Packet latency average = 937.781
+	minimum = 212
+	maximum = 1625
+Network latency average = 902.736
+	minimum = 212
+	maximum = 1055
+Slowest packet = 47964
+Flit latency average = 902.736
+	minimum = 212
+	maximum = 1055
+Slowest flit = 47964
+Fragmentation average = 0
+	minimum = 0
+	maximum = 0
+Injected packet rate average = 0.0329023
+	minimum = 0.03 (at node 10)
+	maximum = 0.052 (at node 2)
+Accepted packet rate average = 0.03125
+	minimum = 0.03 (at node 7)
+	maximum = 0.032 (at node 0)
+Injected flit rate average = 0.0329023
+	minimum = 0.03 (at node 10)
+	maximum = 0.052 (at node 2)
+Accepted flit rate average= 0.03125
+	minimum = 0.03 (at node 7)
+	maximum = 0.032 (at node 0)
+Injected packet length average = 1
+Accepted packet length average = 1
+Total in-flight flits = 34598 (0 measured)
+latency change    = 0.599844
+throughput change = 0.005375
+Average latency for class 0 exceeded 500 cycles. Aborting simulation.
+Too many sample periods needed to converge
+Simulation unstable, ending ...
+Total run time 20.3349
