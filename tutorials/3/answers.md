@@ -9,7 +9,7 @@ A: Adversarial traffic refers to a kind of traffic which is deliberatley skewed 
 
 3. What is the ideal throughput for uniform random traffic and adversarial traffic?
 
-A: The ideal throughput for uniform random traffic is huihiuhiuhi. Whereas the ideal throughput for adversarial traffic is jihoihohioo.
+A: The ideal throughput for uniform random traffic is huihiuhiuhi. Whereas the ideal throughput for adversarial traffic is TBD.
 
 4. In non-minimal routing, the intermediate node is chosen randomly. Why?
 
@@ -32,7 +32,7 @@ Although the instruction says to implement own adversarial traffic, using bit re
 x, y, xr, and yr accordingly). Run minimal routing on adversarial traffic. What is the saturation 
 throughput (Hint: plot the latency-throughput graph)? Is it far from the ideal throughput?
 
-A: The cycle exceeds 500 cycles at 0.275 injection rate (packets per flit cycle). IS IT FAR FROM THE IDEAL THROUGHPUT?
+A: The cycle exceeds 500 cycles at 0.275 injection rate (packets per flit cycle). Q: IS IT FAR FROM THE IDEAL THROUGHPUT?
 
 2. Similar with question 1, we will run minimal routing on adversarial traffic but on a 4-router, 16-
 nodes 1D Flattened Butterfly. Is the saturation throughput higher/lower than the configuration 
@@ -52,7 +52,7 @@ A: Refer to 5_UGAL.pdf
 
 2. Run the simulation on a 16-router, 256-nodes 1D Flattened Butterfly. What is the saturation throughput achieved by UGAL for uniform random and adversarial traffic? Does it approach the ideal saturation throughput for both traffics?
 
-A: Exceeds 500 cycles at Injection Rate of 0.275 for adversarial traffic.
+A: Exceeds 500 cycles at Injection Rate of 0.425, 0.925, respectively.
 
 3. Do you think the performance of UGAL will be affected if it is run on different network sizes (32-nodes and 1024-nodes 1D Flattened Butterfly).
 
